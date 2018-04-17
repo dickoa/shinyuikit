@@ -1,0 +1,13 @@
+Package: shinyuikit
+Title: UIkit for Shiny
+Version: 0.0.1
+Authors@R: person("Ahmadou", "Dicko", email = "mail@ahmadoudicko.com", role = c("aut", "cre"))
+Description: UIkit for Shiny.
+URL: https://gitlab.com/dickoa/shinyuikit 
+BugReports: https://gitlab.com/dickoa/shinyuikit/issues
+Depends: R (>= 3.4.2)
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports: shiny
+RoxygenNote: 6.0.1

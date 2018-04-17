@@ -1,0 +1,80 @@
+---
+output:
+  github_document
+---
+
+shinyuikit
+============
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  eval = FALSE,
+  fig.width = 10,
+  fig.path = "inst/img/",
+  comment = "#> ")
+
+hook_output <- knitr::knit_hooks$get("output")
+knitr::knit_hooks$set(output = function(x, options) {
+   lines <- options$output.lines
+   if (is.null(lines)) {
+     return(hook_output(x, options))  # pass to default hook
+   }
+   x <- unlist(strsplit(x, "\n"))
+   more <- "..."
+   if (length(lines)==1) {        # first n lines
+     if (length(x) > lines) {
+       # truncate the output, but add ....
+       x <- c(head(x, lines), more)
+     }
+   } else {
+     x <- c(if (abs(lines[1])>1) more else NULL,
+            x[lines],
+            if (length(x)>lines[abs(length(lines))]) more else NULL
+           )
+   }
+   # paste these lines together
+   x <- paste(c(x, ""), collapse = "\n")
+   hook_output(x, options)
+ })
+
+knitr::opts_chunk$set(
+  comment = "#>",
+  echo = TRUE,
+  collapse = TRUE,
+  eval = FALSE,
+  warning = FALSE,
+  message = FALSE
+)
+```
+
+[![GitLab CI Build Status](https://gitlab.com/dickoa/shinyuikit/badges/master/build.svg)](https://gitlab.com/dickoa/shinyuikit/pipelines) 
+[![Codecov Code Coverage](https://codecov.io/gl/dickoa/shinyuikit/branch/master/graph/badge.svg)](https://codecov.io/gl/dickoa/shinyuikit)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+
+[UIkit](https://getuikit.com/) for [Shiny](https://shiny.rstudio.com/).
+
+## Installation
+
+```r
+# install.packages("devtools")
+devtools::install_git("https://gitlab.com/dickoa/shinyuikit")
+```
+
+## Example
+
+```r
+library(shiny)
+
+shinyApp(
+  ui = ukPage(
+  ),
+  server = function(input, output) { }
+)
+```
+
