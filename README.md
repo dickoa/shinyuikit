@@ -10,7 +10,8 @@ Coverage](https://codecov.io/gl/dickoa/shinyuikit/branch/master/graph/badge.svg)
 [![License:
 MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-[UIkit](https://getuikit.com/) for [Shiny](https://shiny.rstudio.com/).
+[UIkit](https://getuikit.com/) front-end framework for
+[Shiny](https://shiny.rstudio.com/).
 
 ## Installation
 
