@@ -10,10 +10,7 @@
 ##' @param vertical 
 ##' @return 
 ##' @author Ahmadou H. Dicko
-ukRadioInput <- function(inputId, label, choices = NULL, selected = NULL, stacked = TRUE, vertical = TRUE) {
-  layout <- "uk-form-stacked"
-  if (!stacked)
-    layout <- "uk-form-horizontal"
+ukRadioInput <- function(inputId, label, choices = NULL, selected = NULL) {
  
   if (is.null(choices) || is.null(selected))
     stop("missing choices or selected", call. = FALSE)
@@ -41,12 +38,9 @@ ukRadioInput <- function(inputId, label, choices = NULL, selected = NULL, stacke
       input <- shiny::tagAppendAttributes(input, checked = NA)    
     choicetag <- shiny::tags$label(input, choices$name[i])
     radio <- shiny::tagAppendChild(radio, choicetag)
-    if (isTRUE(vertical))
-      radio <- tagList(radio, br())
   }
-
+  
   radio <- tags$form(
-    class = layout,
     tags$fieldset(
       class = "uk-fieldset",
       radio

@@ -9,15 +9,11 @@
 ##' @param stacked 
 ##' @return 
 ##' @author Ahmadou H. Dicko
-ukCheckBoxInput <- function(inputId, label, choices = NULL, selected = NULL, stacked = TRUE) {
+ukCheckBoxInput <- function(inputId, label, choices = NULL, selected = NULL) {
 
-  layout <- "uk-form-stacked"
-  if (!stacked)
-    layout <- "uk-form-horizontal"
+  if (is.null(choices))
+    stop("missing choices", call. = FALSE)
  
-  if (is.null(choices) || is.null(selected))
-    stop("missing choices or selected", call. = FALSE)
-  
   if (length(names(choices))) {
     choices <- list(name = names(choices), value = unname(choices))
   } else {
@@ -37,14 +33,13 @@ ukCheckBoxInput <- function(inputId, label, choices = NULL, selected = NULL, sta
       value = choices$value[i]
     )
     
-    if (choices$value[i] == selected)
+    if (!is.null(selected) && choices$value[i] == selected)
       input <- shiny::tagAppendAttributes(input, checked = NA)    
     choicetag <- shiny::tags$label(input, choices$name[i])
     checkbox <- shiny::tagAppendChild(checkbox, choicetag)
   }
 
   checkbox <- tags$form(
-    class = layout,
     tags$fieldset(
       class = "uk-fieldset",
       checkbox

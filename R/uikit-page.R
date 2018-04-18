@@ -1,7 +1,6 @@
 ##' .. content for \description{} (no empty lines) ..
 ##'
 ##' .. content for \details{} ..
-##' @title 
 ##' @param ... 
 ##' @param title 
 ##' @return 
@@ -22,6 +21,9 @@ ukPage <- function(..., title = NULL) {
       ),
       shiny::includeCSS(
         system.file("www/uikit/css/uikit.min.css", package = "shinyuikit")
+      ),
+      shiny::includeCSS(
+        system.file("www/ionicons/css/ionicons.min.css", package = "shinyuikit")
       ),
       shiny::includeScript(
         system.file("www/uikit/js/uikit.min.js", package = "shinyuikit")
