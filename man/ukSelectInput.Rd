@@ -21,7 +21,7 @@ UIkit select input form for Shiny
 library(shiny)
 
 shinyApp(
-  ui = bulmaPage(
+  ui = ukPage(
    tags$h1("Hello UIkit"),
    ukSelectInput("var", "Select",
      choices = c("Miles per galon" = "mpg", "Displacement" = "disp")),

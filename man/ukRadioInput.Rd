@@ -20,10 +20,12 @@ UIkit radio for Shiny
 }
 \examples{
 \dontrun{
+library(shiny)
+
 shinyApp(
   ui = ukPage(
    tags$h1("Hello UIkit"),
-   ukRadioInput("select", c("Miles per galon" = "mpg", "Rear axle ratio" = "drat")),
+   ukRadioInput("select", c("Miles per galon" = "mpg", "Rear axle ratio" = "drat"), selected = "mpg"),
    verbatimTextOutput("selected")
   ),
   server = function(input, output) {
