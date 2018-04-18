@@ -1,14 +1,27 @@
-##' .. content for \description{} (no empty lines) ..
+##' Create a shinyuikit checkbox input
 ##'
-##' .. content for \details{} ..
-##' @title 
-##' @param inputId 
-##' @param label 
-##' @param choices 
-##' @param selected 
-##' @param stacked 
-##' @return 
-##' @author Ahmadou H. Dicko
+##' UIkit checkbox input for Shiny
+##' @param inputId character. The input identifider used to access the value
+##' @param label character. Input label
+##' @param choices character. Named or unnamed vector of choices.
+##' @param selected character. Selected checkbox input
+##' @examples
+##' \dontrun{
+##' library(shiny)
+##' shinyApp(
+##'   ui = ukPage(
+##'    tags$h1("Hello UIkit"),
+##'    ukCheckBoxInput("select", c("Miles per galon" = "mpg", "Rear axle ratio" = "drat")),
+##'    verbatimTextOutput("selected")
+##'   ),
+##'   server = function(input, output) {
+##'     output$selected <- renderText({
+##'       input$select
+##'     })
+##'   }
+##' )
+##' }
+##' @export
 ukCheckBoxInput <- function(inputId, label, choices = NULL, selected = NULL) {
 
   if (is.null(choices))

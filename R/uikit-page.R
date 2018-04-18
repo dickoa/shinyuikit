@@ -1,10 +1,20 @@
-##' .. content for \description{} (no empty lines) ..
+##' Create a shinyuikit page
+##' 
+##' Build a shinyuikit pages
 ##'
-##' .. content for \details{} ..
+##' 
 ##' @param ... 
-##' @param title 
-##' @return 
-##' @author Ahmadou H. Dicko
+##' @param title character. The title of the page
+##' @examples
+##' \dontrun{
+##' shiny::shinyApp(
+##'   ui = ukPage(
+##'    tags$h1("Hello UIkit"),
+##'   ),
+##'   server = function(input, output) {}
+##' )
+##' }
+##' @export
 ukPage <- function(..., title = NULL) {
  
   shiny::tags$html(

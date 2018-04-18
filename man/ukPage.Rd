@@ -2,18 +2,25 @@
 % Please edit documentation in R/uikit-page.R
 \name{ukPage}
 \alias{ukPage}
-\title{.. content for \description{} (no empty lines) ..}
+\title{Create a shinyuikit page}
 \usage{
 ukPage(..., title = NULL)
 }
 \arguments{
 \item{...}{}
 
-\item{title}{}
+\item{title}{character. The title of the page}
 }
 \description{
-.. content for \details{} ..
+Build a shinyuikit pages
 }
-\author{
-Ahmadou H. Dicko
+\examples{
+\dontrun{
+shiny::shinyApp(
+  ui = ukPage(
+   tags$h1("Hello UIkit"),
+  ),
+  server = function(input, output) {}
+)
+}
 }

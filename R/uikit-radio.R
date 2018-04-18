@@ -1,15 +1,26 @@
-##' .. content for \description{} (no empty lines) ..
+##' Create a shinyuikit radio
 ##'
-##' .. content for \details{} ..
-##' @title 
-##' @param inputId 
-##' @param label 
-##' @param choices 
-##' @param selected 
-##' @param stacked 
-##' @param vertical 
-##' @return 
-##' @author Ahmadou H. Dicko
+##' UIkit radio for Shiny
+##' @param inputId character. The input identifider used to access the value
+##' @param label character. Radio label
+##' @param choices character. Named or unnamed vector of choices.
+##' @param selected character. Selected radio input
+##' @examples
+##' \dontrun{
+##' shinyApp(
+##'   ui = ukPage(
+##'    tags$h1("Hello UIkit"),
+##'    ukRadioInput("select", c("Miles per galon" = "mpg", "Rear axle ratio" = "drat")),
+##'    verbatimTextOutput("selected")
+##'   ),
+##'   server = function(input, output) {
+##'     output$selected <- renderText({
+##'       input$select
+##'     })
+##'   }
+##' )
+##' }
+##' @export
 ukRadioInput <- function(inputId, label, choices = NULL, selected = NULL) {
  
   if (is.null(choices) || is.null(selected))

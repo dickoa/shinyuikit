@@ -1,13 +1,26 @@
-##' .. content for \description{} (no empty lines) ..
+##' Create a shinyuikit text input
+##' 
+##' UIkit text input for shiny
 ##'
-##' .. content for \details{} ..
-##' @title 
-##' @param inputId 
-##' @param label 
-##' @param placeholder 
-##' @param stacked 
-##' @return 
-##' @author Ahmadou H. Dicko
+##' @param inputId character. The input identifider used to access the value.
+##' @param label character. Input label.
+##' @param placeholder character. Input placeholder.
+##'
+##' @examples
+##' \dontrun{
+##' library(shiny)
+##' shinyApp(
+##'   ui = ukPage(
+##'    tags$h1("Hello UIkit"),
+##'    ukTextInput("txt", label = "Input text", placeholder = "Type here"),
+##'    verbatimTextOutput("default")
+##'   ),
+##'   server = function(input, output) {
+##'     output$default <- renderText({ input$txt })
+##'   }
+##' )
+##' }
+##' @export
 ukTextInput <- function(inputId, label, placeholder, stacked = TRUE) {
   layout <- "uk-form-stacked"
   if (!stacked)
