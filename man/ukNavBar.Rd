@@ -4,7 +4,8 @@
 \alias{ukNavBar}
 \title{Create a shinyuikit NavBar}
 \usage{
-ukNavBar(...)
+ukNavBar(..., transparent = FALSE, margin = FALSE, position = NULL,
+  options = NA)
 }
 \arguments{
 \item{...}{}

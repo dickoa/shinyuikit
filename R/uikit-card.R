@@ -2,11 +2,12 @@
 ##' 
 ##' Build a UIkit Card for Shiny
 ##' 
-##' @param ... 
+##' @param ... The UI elements to place in the card
 ##' @param style character. Can be 'default', 'primary' or 'secondary'. 
 ##' @param size character. Can be 'small' or 'large'.
 ##' @param hover logical. Create hover effect on the card.
 ##' @export
+##' @rdname ukCard
 ukCard <- function(..., style = NULL, size = NULL, hover = FALSE) {
 
   if (!is.null(style) && !style %in% c("default", "primary", "secondary"))
@@ -37,9 +38,10 @@ ukCard <- function(..., style = NULL, size = NULL, hover = FALSE) {
 ##' 
 ##' Build a UIkit Card Body for Shiny
 ##' 
-##' @param ... 
+##' @param ... The UI elements to place in the card body
 ##' @param style character. Can be 'default', 'primary' or 'secondary'. 
 ##' @export
+##' @rdname ukCard
 ukCardBody <- function(..., style = NULL) {
   
   if (!is.null(style) && !style %in% c("default", "primary", "secondary"))
@@ -61,9 +63,10 @@ ukCardBody <- function(..., style = NULL) {
 ##' 
 ##' Build a UIkit Card media for Shiny
 ##'
-##' @param ... 
-##' @param position 
+##' @param ... The UI elements to place in the card media
+##' @param position character. 'top', 'bottom', 'left' or 'right'
 ##' @export
+##' @rdname ukCard
 ukCardMedia <- function(..., position = NULL) {
   
   if (!is.null(position) && !position %in% c("top", "bottom", "left", "right"))
@@ -84,8 +87,9 @@ ukCardMedia <- function(..., position = NULL) {
 ##' 
 ##' Build a UIkit Card media for Shiny
 ##'
-##' @param ... 
+##' @param ... The UI elements to place in the card footer
 ##' @export
+##' @rdname ukCard
 ukCardFooter <- function(...) {
   
   shiny::tags$div(
@@ -100,9 +104,10 @@ ukCardFooter <- function(...) {
 ##' 
 ##' Build a UIkit Card title for Shiny
 ##' 
-##' @param ... 
+##' @param title character. The card title
 ##' @export
-ukCardTitle <- function(...) {
+##' @rdname ukCard
+ukCardTitle <- function(title) {
   
   shiny::tags$h3(
     class = "uk-card-title",

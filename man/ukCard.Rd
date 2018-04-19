@@ -2,19 +2,51 @@
 % Please edit documentation in R/uikit-card.R
 \name{ukCard}
 \alias{ukCard}
+\alias{ukCardBody}
+\alias{ukCardMedia}
+\alias{ukCardFooter}
+\alias{ukCardTitle}
 \title{Create a shinyuikit Card}
 \usage{
 ukCard(..., style = NULL, size = NULL, hover = FALSE)
+
+ukCardBody(..., style = NULL)
+
+ukCardMedia(..., position = NULL)
+
+ukCardFooter(...)
+
+ukCardTitle(title)
 }
 \arguments{
-\item{...}{}
+\item{...}{The UI elements to place in the card}
 
 \item{style}{character. Can be 'default', 'primary' or 'secondary'.}
 
 \item{size}{character. Can be 'small' or 'large'.}
 
 \item{hover}{logical. Create hover effect on the card.}
+
+\item{position}{character. 'top', 'bottom', 'left' or 'right'}
+
+\item{title}{character. The card title}
+
+\item{...}{The UI elements to place in the card body}
+
+\item{style}{character. Can be 'default', 'primary' or 'secondary'.}
+
+\item{...}{The UI elements to place in the card media}
+
+\item{...}{The UI elements to place in the card footer}
 }
 \description{
 Build a UIkit Card for Shiny
+
+Build a UIkit Card Body for Shiny
+
+Build a UIkit Card media for Shiny
+
+Build a UIkit Card media for Shiny
+
+Build a UIkit Card title for Shiny
 }
