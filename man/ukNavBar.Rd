@@ -2,13 +2,18 @@
 % Please edit documentation in R/uikit-navbar.R
 \name{ukNavBar}
 \alias{ukNavBar}
+\alias{ukNavBarDropDown}
 \title{Create a shinyuikit NavBar}
 \usage{
 ukNavBar(..., transparent = FALSE, margin = FALSE, position = NULL,
   options = NA)
+
+ukNavBarDropDown(...)
 }
 \arguments{
-\item{...}{}
+\item{...}{The UI elements to place in the card}
+
+\item{...}{The UI elements to place in the card}
 }
 \description{
 Build a shinyuikit NavBar

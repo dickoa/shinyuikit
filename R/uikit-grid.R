@@ -2,7 +2,7 @@
 ##' 
 ##' Build a shinyuikit Grid
 ##'
-##' @param ... 
+##' @param ... The UI elements to place in the card
 ##' @param divider logical. Divider modifier that separate grid cells with lines.
 ##' @param gutter character. size of the gutter 'small', 'medium' or 'large', you can use 'collapse' to remove gutter entirely.
 ##' @param match_height logical.
@@ -47,4 +47,3 @@ ukGrid <- function(..., divider = FALSE, gutter = NULL, match_height = FALSE, ch
     `uk-grid` = NA
   )
 }
-

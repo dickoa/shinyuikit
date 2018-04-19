@@ -2,7 +2,7 @@
 ##' 
 ##' Build a shinyuikit NavBar
 ##'
-##' @param ... 
+##' @param ... The UI elements to place in the card
 ##' @export
 ukNavBar <- function(..., transparent = FALSE, margin = FALSE, position = NULL, options = NA) {
 
@@ -25,9 +25,10 @@ ukNavBar <- function(..., transparent = FALSE, margin = FALSE, position = NULL, 
   )
 }
 
-
-
-ukNavBarDropDown <- function() {
+##' @param ... The UI elements to place in the card
+##' @rdname ukNavBar
+##' @export
+ukNavBarDropDown <- function(...) {
   shiny::tags$div(
     class = cl,
     ...,

@@ -8,7 +8,7 @@ ukGrid(..., divider = FALSE, gutter = NULL, match_height = FALSE,
   child_width = NULL)
 }
 \arguments{
-\item{...}{}
+\item{...}{The UI elements to place in the card}
 
 \item{divider}{logical. Divider modifier that separate grid cells with lines.}
 
