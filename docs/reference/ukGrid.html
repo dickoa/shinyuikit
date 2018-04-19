@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create a shinyuikit radio — ukRadioInput • shinyuikit</title>
+<title>Create a shinyuikit Grid — ukGrid • shinyuikit</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -75,62 +75,50 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create a shinyuikit radio</h1>
+    <h1>Create a shinyuikit Grid</h1>
     </div>
 
     
-    <p>UIkit radio for Shiny</p>
+    <p>Build a shinyuikit Grid</p>
     
 
-    <pre class="usage"><span class='fu'>ukRadioInput</span>(<span class='no'>inputId</span>, <span class='no'>label</span>, <span class='kw'>choices</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>selected</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>ukGrid</span>(<span class='no'>...</span>, <span class='kw'>divider</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>gutter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>match_height</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>child_width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>inputId</th>
-      <td><p>character. The input identifider used to access the value</p></td>
+      <th>...</th>
+      <td></td>
     </tr>
     <tr>
-      <th>label</th>
-      <td><p>character. Radio label</p></td>
+      <th>divider</th>
+      <td><p>logical. Divider modifier that separate grid cells with lines.</p></td>
     </tr>
     <tr>
-      <th>choices</th>
-      <td><p>character. Named or unnamed vector of choices.</p></td>
+      <th>gutter</th>
+      <td><p>character. size of the gutter 'small', 'medium' or 'large', you can use 'collapse' to remove gutter entirely.</p></td>
     </tr>
     <tr>
-      <th>selected</th>
-      <td><p>character. Selected radio input</p></td>
+      <th>match_height</th>
+      <td><p>logical.</p></td>
+    </tr>
+    <tr>
+      <th>child_width</th>
+      <td><p>character. grid with child elements evenly split without the need to apply to each list item within the grid.
+you can choose 'half' to have half of their parent container, 'third' take up third of parent container, this apply to 'fourth', 'fifth' or 'sixth'.
+'auto' divides the grid into equal units based on content size or 'expand' equal units on available space</p></td>
     </tr>
     </table>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='fu'>library</span>(<span class='no'>shiny</span>)
-
-<span class='fu'><a href='http://www.rdocumentation.org/packages/shiny/topics/shinyApp'>shinyApp</a></span>(
-  <span class='kw'>ui</span> <span class='kw'>=</span> <span class='fu'><a href='ukPage.html'>ukPage</a></span>(
-   <span class='no'>tags</span>$<span class='fu'><a href='http://www.rdocumentation.org/packages/shiny/topics/builder'>h1</a></span>(<span class='st'>"Hello UIkit"</span>),
-   <span class='fu'>ukRadioInput</span>(<span class='st'>"select"</span>, <span class='fu'>c</span>(<span class='st'>"Miles per galon"</span> <span class='kw'>=</span> <span class='st'>"mpg"</span>, <span class='st'>"Rear axle ratio"</span> <span class='kw'>=</span> <span class='st'>"drat"</span>), <span class='kw'>selected</span> <span class='kw'>=</span> <span class='st'>"mpg"</span>),
-   <span class='fu'><a href='http://www.rdocumentation.org/packages/shiny/topics/verbatimTextOutput'>verbatimTextOutput</a></span>(<span class='st'>"selected"</span>)
-  ),
-  <span class='kw'>server</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>) {
-    <span class='no'>output</span>$<span class='no'>selected</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/shiny/topics/renderText'>renderText</a></span>({
-      <span class='no'>input</span>$<span class='no'>select</span>
-    })
-  }
-)
-<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-            
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+                </ul>
 
   </div>
 </div>

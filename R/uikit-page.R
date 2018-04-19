@@ -7,6 +7,8 @@
 ##' @param title character. The title of the page
 ##' @examples
 ##' \dontrun{
+##' library(shiny)
+##' 
 ##' shiny::shinyApp(
 ##'   ui = ukPage(
 ##'    tags$h1("Hello UIkit"),

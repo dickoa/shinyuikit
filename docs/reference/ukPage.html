@@ -100,9 +100,11 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='fu'>library</span>(<span class='no'>shiny</span>)
+
 <span class='kw pkg'>shiny</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/shiny/topics/shinyApp'>shinyApp</a></span>(
   <span class='kw'>ui</span> <span class='kw'>=</span> <span class='fu'>ukPage</span>(
-   <span class='no'>tags</span>$<span class='fu'>h1</span>(<span class='st'>"Hello UIkit"</span>),
+   <span class='no'>tags</span>$<span class='fu'><a href='http://www.rdocumentation.org/packages/shiny/topics/builder'>h1</a></span>(<span class='st'>"Hello UIkit"</span>),
   ),
   <span class='kw'>server</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>) {}
 )

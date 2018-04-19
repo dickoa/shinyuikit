@@ -16,6 +16,8 @@ Build a shinyuikit pages
 }
 \examples{
 \dontrun{
+library(shiny)
+
 shiny::shinyApp(
   ui = ukPage(
    tags$h1("Hello UIkit"),
