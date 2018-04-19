@@ -11,9 +11,9 @@ ukNavBar(..., transparent = FALSE, margin = FALSE, position = NULL,
 ukNavBarDropDown(...)
 }
 \arguments{
-\item{...}{The UI elements to place in the card}
+\item{...}{The UI elements to place in the navigation bar}
 
-\item{...}{The UI elements to place in the card}
+\item{...}{The UI elements to place in the navigation bar dropdown}
 }
 \description{
 Build a shinyuikit NavBar

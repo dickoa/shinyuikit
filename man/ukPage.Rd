@@ -7,7 +7,7 @@
 ukPage(..., title = NULL)
 }
 \arguments{
-\item{...}{}
+\item{...}{The UI elements to place in the page}
 
 \item{title}{character. The title of the page}
 }

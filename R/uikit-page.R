@@ -3,7 +3,7 @@
 ##' Build a shinyuikit pages
 ##'
 ##' 
-##' @param ... 
+##' @param ... The UI elements to place in the page
 ##' @param title character. The title of the page
 ##' @examples
 ##' \dontrun{
