@@ -5,7 +5,7 @@
 \title{Create a shinyuikit Grid}
 \usage{
 ukGrid(..., divider = FALSE, gutter = NULL, match_height = FALSE,
-  child_width = NULL)
+  width = NULL, child_width = NULL, text_center = FALSE)
 }
 \arguments{
 \item{...}{The UI elements to place in the card}

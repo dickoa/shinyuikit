@@ -10,7 +10,8 @@
 \usage{
 ukCard(..., style = NULL, size = NULL, hover = FALSE)
 
-ukCardBody(..., style = NULL)
+ukCardBody(..., style = NULL, size = NULL, hover = FALSE, width = NULL,
+  height = NULL)
 
 ukCardMedia(..., position = NULL)
 
@@ -26,6 +27,10 @@ ukCardTitle(title)
 \item{size}{character. Can be 'small' or 'large'.}
 
 \item{hover}{logical. Create hover effect on the card.}
+
+\item{width}{character. Can be 'default', 'primary' or 'secondary'.}
+
+\item{height}{character. Can be 'default', 'primary' or 'secondary'.}
 
 \item{position}{character. 'top', 'bottom', 'left' or 'right'}
 

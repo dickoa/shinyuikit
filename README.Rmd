@@ -70,11 +70,43 @@ devtools::install_git("https://gitlab.com/dickoa/shinyuikit")
 
 ```r
 library(shiny)
-
+library(shinyuikit)
 shinyApp(
   ui = ukPage(
+    ukGrid(
+      div(
+        ukCardBody(ukCardTitle("Hover"),
+                   p("Lorem ipsum dolor sit amet, consectetur adipisicing elit"),
+                   plotOutput("hist1"),
+                   hover = TRUE)
+      ),
+      div(
+        ukCardBody(ukCardTitle("Default"),
+                   p("Lorem ipsum dolor sit amet, consectetur adipisicing elit."),
+                   plotOutput("hist2"),
+                   style = "default", hover = TRUE)
+      ),
+      div(
+        ukCardBody(ukCardTitle("Primary"),
+                   p("Lorem ipsum dolor sit amet, consectetur adipisicing elit."),
+                   plotOutput("hist3"),
+                   style = "primary", hover = TRUE)
+      ),
+      div(
+        ukCardBody(ukCardTitle("Secondary"),
+                   p("Lorem ipsum dolor sit amet, consectetur adipisicing elit."),
+                   plotOutput("hist4"),
+                   style = "secondary", hover = TRUE)
+      ),
+      child_width = "half", match_height = TRUE)
   ),
-  server = function(input, output) { }
+  server = function(input, output) {
+    output$hist1 <- renderPlot({hist(rnorm(1000))})
+    output$hist2 <- renderPlot({hist(rnorm(1000))})
+    output$hist3 <- renderPlot({hist(rnorm(1000))})
+    output$hist4 <- renderPlot({hist(rnorm(1000))})
+  }
 )
 ```
+
 

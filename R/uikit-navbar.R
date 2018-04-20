@@ -3,11 +3,15 @@
 ##' Build a shinyuikit NavBar
 ##'
 ##' @param ... The UI elements to place in the navigation bar
+##' @param transparent The UI elements to place in the navigation bar
+##' @param margin The UI elements to place in the navigation bar
+##' @param position The UI elements to place in the navigation bar
+##' @param options The UI elements to place in the navigation bar
 ##' @export
 ukNavBar <- function(..., transparent = FALSE, margin = FALSE, position = NULL, options = NA) {
 
   if (!is.null(position) && !position %in% c("left", "right", "center"))
-    stop("gutter should be on of 'left', 'right' or 'center'", call. = FALSE)
+    stop("position should be on of 'left', 'right' or 'center'", call. = FALSE)
   
   cl <- "uk-navbar-container"
 

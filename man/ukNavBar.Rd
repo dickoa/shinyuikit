@@ -13,6 +13,14 @@ ukNavBarDropDown(...)
 \arguments{
 \item{...}{The UI elements to place in the navigation bar}
 
+\item{transparent}{The UI elements to place in the navigation bar}
+
+\item{margin}{The UI elements to place in the navigation bar}
+
+\item{position}{The UI elements to place in the navigation bar}
+
+\item{options}{The UI elements to place in the navigation bar}
+
 \item{...}{The UI elements to place in the navigation bar dropdown}
 }
 \description{
