@@ -17,9 +17,8 @@
 ##' )}
 ##' @author Ahmadou H. Dicko
 ukContainer <- function(..., size = NULL) {
-  
-  if (!is.null(size) && !size %in% c("small", "large", "expand"))
-    stop("size should be on of 'small', 'large' or 'expand'", call. = FALSE)
+
+  assert_size(size)
 
   cl <- "uk-container"
 

@@ -10,11 +10,8 @@
 ##' @export
 ukCard <- function(..., style = NULL, size = NULL, hover = FALSE) {
 
-  if (!is.null(style) && !style %in% c("default", "primary", "secondary"))
-    stop("size should be on of 'default', 'primary' or 'secondary'", call. = FALSE)
-
-  if (!is.null(size) && !size %in% c("small", "large"))
-    stop("size should be one of 'small' or 'large'", call. = FALSE)
+  assert_style(style)
+  assert_size(size)
   
   cl <- "uk-card"
   
@@ -46,41 +43,16 @@ ukCard <- function(..., style = NULL, size = NULL, hover = FALSE) {
 ##' @export
 ukCardBody <- function(..., style = NULL, size = NULL, hover = FALSE, width = NULL, height = NULL) {
 
-  if (!is.null(style) && !style %in% c("default", "primary", "secondary"))
-    stop("size should be on of 'default', 'primary' or 'secondary'", call. = FALSE)
-  
-  if (!is.null(size) && !size %in% c("small", "large"))
-    stop("size should be one of 'small' or 'large'", call. = FALSE)
-
-  if (!is.null(height) && !height %in% c("small", "max-small", "medium", "max-medium", "large", "max-large"))
-    stop("size should be one of 'small', 'max-small', 'medium', 'max-medium', 'large' or  'max-large'", call. = FALSE)
+  assert_style(style)
+  assert_size(size)
+  assert_width(width)
+  assert_height(height)
   
   cl <- "uk-card-body"
-
+  
   if (!is.null(width))
-    cl <- paste(cl, switch(
-      width,
-      one = "uk-width-1-1",
-      half = "uk-width-1-2",
-      third = "uk-width-1-3",
-      `two-thirds` = "uk-width-2-3",
-      fourth = "uk-width-1-4",
-      `three-fourths` = "uk-width-3-4",
-      fifth = "uk-width-1-5",
-      `two-fifths` = "uk-width-2-5",
-      `three-fifths` = "uk-width-3-5",
-      `four-fifths` = "uk-width-4-5",
-      sixth = "uk-width-1-6",
-      `fith-sixths` = "uk-width-5-6",
-      small = "uk-width-small",
-      medium = "uk-width-medium",
-      large = "uk-width-large",
-      xlarge = "uk-width-xlarge",
-      xxlarge = "uk-width-xxlarge",
-      auto = "uk-width-auto",
-      expand = "uk-width-expand"
-    ))
-
+    cl <- paste(cl, uk_width(width))
+  
   if (!is.null(height))
     cl <- paste(cl, paste0("uk-height-", height))
   
@@ -90,9 +62,9 @@ ukCardBody <- function(..., style = NULL, size = NULL, hover = FALSE, width = NU
   if (!is.null(style))
     cl <- paste(cl, paste0("uk-card-", style))
   
-  if (isTRUE(size))
+  if (!is.null(size))
     cl <- paste(cl, paste0("uk-card-", size))
-
+  
   shiny::tags$div(
     class = cl,
     ...
@@ -109,9 +81,8 @@ ukCardBody <- function(..., style = NULL, size = NULL, hover = FALSE, width = NU
 ##' @rdname ukCard
 ##' @export
 ukCardMedia <- function(..., position = NULL) {
-  
-  if (!is.null(position) && !position %in% c("top", "bottom", "left", "right"))
-    stop("position should be one of 'top', 'bottom', 'left' or 'right'", call. = FALSE)
+
+  assert_position(position)
   
   cl <- "uk-card-media"
   if (!is.null(position))

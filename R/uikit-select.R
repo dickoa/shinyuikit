@@ -4,7 +4,7 @@
 ##'
 ##' @param inputId character.The input identifider used to access the value.
 ##' @param label character. Input label.
-##' @param choices character. Named or unnamed vector of choices.
+##' @param choices character. Named or unnamed vector of choices or a list of vector to make group of select option.
 ##'
 ##' @examples
 ##' \dontrun{
@@ -25,27 +25,31 @@
 ##' )
 ##' }
 ##' @export
-ukSelectInput <- function(inputId, label, choices = NULL) {
+ukSelectInput <- function(inputId, label, choices = NULL, width = NULL) {
   
+  cl <- "uk-input shinyUIkitSelect"
+
+  assert_width(width)
+  
+  if (!is.null(width))
+    cl <- paste(cl, uk_width(width))
+
   select <- shiny::tags$select(
-    class = "uk-select shinyUIkitSelect",
+    class = cl,
     id = inputId
   )
-
+  
   if (is.list(choices)) {
-    choicestag <- Reduce(tagList, lapply(seq_along(choices), function(i) tagAppendChild(tags$optgroup(label = names(choices)[i]), choices2options(choices[[i]]))))
+    choicestag <- Reduce(shiny::tagList, lapply(seq_along(choices), function(i) shiny::tagAppendChild(shiny::tags$optgroup(label = names(choices)[i]), choices2options(choices[[i]]))))
   } else {
     choicestag <- choices2options(choices)
   }
-  select <- tagAppendChild(select, choicestag)
+  select <- shiny::tagAppendChild(select, choicestag)
 
   select <- shiny::tags$form(
     shiny::tags$fieldset(
       class = "uk-fieldset",
-      shiny::tags$legend(
-        class = "uk-legend",
-        label
-      ),
+      shiny::tags$label(`for` = inputId, label),
       select
     )
   )

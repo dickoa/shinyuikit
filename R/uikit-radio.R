@@ -53,11 +53,12 @@ ukRadioInput <- function(inputId, label, choices = NULL, selected = NULL) {
     radio <- shiny::tagAppendChild(radio, choicetag)
   }
   
-  radio <- tags$form(
-    tags$fieldset(
+  radio <- shiny::tags$form(
+    shiny::tags$fieldset(
       class = "uk-fieldset",
+      shiny::tags$label(`for` = inputId, label),
       radio
-   )
+    )
   )
   
   shiny::tagList(

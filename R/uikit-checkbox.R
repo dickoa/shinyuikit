@@ -11,7 +11,7 @@
 ##' shinyApp(
 ##'   ui = ukPage(
 ##'    tags$h1("Hello UIkit"),
-##'    ukCheckBoxInput("select", c("Miles per galon" = "mpg", "Rear axle ratio" = "drat")),
+##'    ukCheckboxInput("select", c("Miles per galon" = "mpg", "Rear axle ratio" = "drat")),
 ##'    verbatimTextOutput("selected")
 ##'   ),
 ##'   server = function(input, output) {
@@ -22,7 +22,7 @@
 ##' )
 ##' }
 ##' @export
-ukCheckBoxInput <- function(inputId, label, choices = NULL, selected = NULL) {
+ukCheckboxInput <- function(inputId, label, choices = NULL, selected = NULL) {
 
   if (is.null(choices))
     stop("missing choices", call. = FALSE)
@@ -52,9 +52,10 @@ ukCheckBoxInput <- function(inputId, label, choices = NULL, selected = NULL) {
     checkbox <- shiny::tagAppendChild(checkbox, choicetag)
   }
 
-  checkbox <- tags$form(
-    tags$fieldset(
+  checkbox <- shiny::tags$form(
+    shiny::tags$fieldset(
       class = "uk-fieldset",
+      shiny::tags$label(class = "uk-form-label", `for` = inputId, label),
       checkbox
    )
   )

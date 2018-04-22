@@ -21,17 +21,21 @@
 ##' )
 ##' }
 ##' @export
-ukTextInput <- function(inputId, label, placeholder, stacked = TRUE) {
-  layout <- "uk-form-stacked"
-  if (!stacked)
-    layout <- "uk-form-horizontal"
+ukTextInput <- function(inputId, label, placeholder, width = NULL) {
+
+  cl <- "uk-input shinyUIkitText"
+
+  assert_width(width)
+
+  if (!is.null(width))
+    cl <- paste(cl, uk_width(width))
   
   txt <- shiny::tags$form(
-    class = layout,
     shiny::tags$fieldset(
       class = "uk-fieldset",
+      shiny::tags$label(class = "uk-form-label", `for` = inputId, label),
       shiny::tags$input(
-        class = "uk-input shinyUIkitText",
+        class = cl,
         type = "text",
         id = inputId,
         placeholder = placeholder

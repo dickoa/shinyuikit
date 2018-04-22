@@ -4,14 +4,14 @@
 \alias{ukSelectInput}
 \title{Create a shinyuikit select input}
 \usage{
-ukSelectInput(inputId, label, choices = NULL)
+ukSelectInput(inputId, label, choices = NULL, width = NULL)
 }
 \arguments{
 \item{inputId}{character.The input identifider used to access the value.}
 
 \item{label}{character. Input label.}
 
-\item{choices}{character. Named or unnamed vector of choices.}
+\item{choices}{character. Named or unnamed vector of choices or a list of vector to make group of select option.}
 }
 \description{
 UIkit select input form for Shiny

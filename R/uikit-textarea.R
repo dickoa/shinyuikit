@@ -22,13 +22,21 @@
 ##' )
 ##' }
 ##' @export
-ukTextAreaInput <- function(inputId, label, rows = 3L, placeholder = NULL) {
+ukTextAreaInput <- function(inputId, label, rows = 3L, placeholder = NULL, width = NULL) {
+
+  cl <- "uk-input shinyUIkitTextArea"
+
+  assert_width(width)
+
+  if (!is.null(width))
+    cl <- paste(cl, uk_width(width))
 
   txtarea <- shiny::tags$form(
     shiny::tags$fieldset(
       class = "uk-fieldset",
+      shiny::tags$label(class = "uk-form-label", `for` = inputId, label),
       shiny::tags$textarea(
-        class = "uk-textarea shinyUIkitTextArea",
+        class = cl,
         rows = rows,
         id = inputId,
         placeholder = placeholder

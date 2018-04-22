@@ -4,7 +4,7 @@
 \alias{ukTextInput}
 \title{Create a shinyuikit text input}
 \usage{
-ukTextInput(inputId, label, placeholder, stacked = TRUE)
+ukTextInput(inputId, label, placeholder, width = NULL)
 }
 \arguments{
 \item{inputId}{character. The input identifider used to access the value.}
