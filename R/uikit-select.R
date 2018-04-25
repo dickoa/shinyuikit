@@ -5,7 +5,8 @@
 ##' @param inputId character.The input identifider used to access the value.
 ##' @param label character. Input label.
 ##' @param choices character. Named or unnamed vector of choices or a list of vector to make group of select option.
-##'
+##' @param selected character. Initial value.
+##' @param choices character. Named or unnamed vector of choices or a list of vector to make group of select option.
 ##' @examples
 ##' \dontrun{
 ##' library(shiny)
@@ -25,8 +26,10 @@
 ##' )
 ##' }
 ##' @export
-ukSelectInput <- function(inputId, label, choices = NULL, width = NULL) {
-  
+ukSelectInput <- function(inputId, label = NULL, choices = NULL, selected = NULL, width = NULL) {
+
+  selected <- shiny::restoreInput(id = inputId, default = selected)
+
   cl <- "uk-input shinyUIkitSelect"
 
   assert_width(width)
@@ -49,7 +52,7 @@ ukSelectInput <- function(inputId, label, choices = NULL, width = NULL) {
   select <- shiny::tags$form(
     shiny::tags$fieldset(
       class = "uk-fieldset",
-      shiny::tags$label(`for` = inputId, label),
+      if (!is.null(label)) shiny::tags$label(`for` = inputId, label),
       select
     )
   )

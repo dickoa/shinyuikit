@@ -1,8 +1,6 @@
-##' .. content for \description{} (no empty lines) ..
+##' UIkit sidebar layout
 ##'
-##' .. content for \details{} ..
-##' @param ... 
-##' @return 
+##' @param ... UI element to add 
 ##' @export
 ukSidebarLayout <- function(...) {
 
@@ -13,14 +11,13 @@ ukSidebarLayout <- function(...) {
 }
 
 
-##' .. content for \description{} (no empty lines) ..
+##' UIkit side bar
 ##'
-##' .. content for \details{} ..
-##' @param ... 
-##' @param sidebar_id 
-##' @param title 
+##' create a right side bar
+##' @param ... UI element to include in the sidebar
+##' @param sidebar_id id of the sidebar
+##' @param title sidebar header
 ##' @export
-##' @author Ahmadou H. Dicko
 ukSidebar <- function(..., sidebar_id, title = NULL) {
   
   shiny::tags$div(
@@ -36,16 +33,26 @@ ukSidebar <- function(..., sidebar_id, title = NULL) {
 }
 
 
-##' .. content for \description{} (no empty lines) ..
+##' UIkit sidebar toggle button
 ##'
 ##' .. content for \details{} ..
-##' @param ... 
-##' @param sidebar_id 
+##' @param ... UI element for the toggle
+##' @param sidebar_id id of the created sidebar 
 ##' @export
 ukSidebarToggle <- function(..., sidebar_id) {
   shiny::tags$button(class = "uk-button uk-button default uk-margin-small-right",
                      type = "button",
                      ...,
                      `uk-toggle` = paste0("target: #", sidebar_id))
-  
+ 
+}
+
+
+##' Button to close the Sidebar
+##'
+##' @export
+ukSidebarClose <- function() {
+  shiny::tags$button(class = "uk-offcanvas-close",
+                     type = "button",
+                     `uk-close` = NA)
 }

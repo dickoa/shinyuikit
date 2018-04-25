@@ -23,8 +23,10 @@
 ##' )
 ##' }
 ##' @export
-ukRadioInput <- function(inputId, label, choices = NULL, selected = NULL) {
- 
+ukRadioInput <- function(inputId, label = NULL, choices = NULL, selected = NULL) {
+
+  selected <- restoreInput(id = inputId, default = selected)
+  
   if (is.null(choices) || is.null(selected))
     stop("missing choices or selected", call. = FALSE)
   
@@ -56,7 +58,7 @@ ukRadioInput <- function(inputId, label, choices = NULL, selected = NULL) {
   radio <- shiny::tags$form(
     shiny::tags$fieldset(
       class = "uk-fieldset",
-      shiny::tags$label(`for` = inputId, label),
+      if (!is.null(label)) shiny::tags$label(`for` = inputId, label),
       radio
     )
   )

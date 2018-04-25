@@ -1,12 +1,11 @@
-##' Create a shinyuikit text input
+##' Create a shinyuikit search input
 ##' 
-##' UIkit text input for shiny
+##' UIkit search input for shiny
 ##'
 ##' @param inputId character. The input identifider used to access the value.
 ##' @param label character. Input label.
-##' @param value Initial value.
 ##' @param placeholder character. Input placeholder.
-##' @param width character. Input UI width.
+##' @param width character. Input width.
 ##' 
 ##' @examples
 ##' \dontrun{
@@ -14,7 +13,7 @@
 ##' shinyApp(
 ##'   ui = ukPage(
 ##'    tags$h1("Hello UIkit"),
-##'    ukTextInput("txt", label = "Input text", placeholder = "Type here"),
+##'       ukSearchInput("txt", placeholder = "Type here"),
 ##'    verbatimTextOutput("default")
 ##'   ),
 ##'   server = function(input, output) {
@@ -23,39 +22,43 @@
 ##' )
 ##' }
 ##' @export
-ukTextInput <- function(inputId, label = NULL, value = "", placeholder = NULL, width = NULL) {
+ukSearchInput <- function(inputId, label = NULL, placeholder = NULL, width = NULL, navbar = FALSE, default_style = TRUE) {
 
-  value <- shiny::restoreInput(id = inputId, default = value)
-  
-  cl <- "uk-input shinyUIkitText"
+  cl <- "uk-search ShinyUIkitSearch"
 
   assert_width(width)
-
+  
   if (!is.null(width))
     cl <- paste(cl, uk_width(width))
+
+  if (isTRUE(default_style))
+    cl <- paste(cl, paste0("uk-search-default"))
   
-  txt <- shiny::tags$form(
+  if (isTRUE(navbar))
+    cl <- paste(cl, "uk-search-navbar")
+  
+  search <- shiny::tags$form(
+    class = cl,
     shiny::tags$fieldset(
       class = "uk-fieldset",
       if (!is.null(label)) shiny::tags$label(class = "uk-form-label", `for` = inputId, label),
       shiny::tags$input(
-        class = cl,
-        type = "text",
+        class = "uk-search-input",
+        type = "search",
         id = inputId,
-        value = value,
         placeholder = placeholder
       )
     )
   )
-  
+ 
   shiny::tagList(
     shiny::singleton(
       shiny::tags$head(
         shiny::includeScript(
-          system.file("www/js/uikit-text-js.js", package = "shinyuikit")
+          system.file("www/js/uikit-search-js.js", package = "shinyuikit")
         )
       )
     ),
-    txt
+    search
   )
 }
