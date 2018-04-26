@@ -1,6 +1,6 @@
-##' Create a shinyuikit NavBar
+##' Create a shinyuikit Navbar
 ##' 
-##' Build a shinyuikit NavBar
+##' Build a shinyuikit Navbar
 ##'
 ##' @param ... The UI elements to place in the navigation bar
 ##' @param transparent The UI elements to place in the navigation bar
@@ -8,11 +8,10 @@
 ##' @param position The UI elements to place in the navigation bar
 ##' @param options The UI elements to place in the navigation bar
 ##' @export
-ukNavBar <- function(..., transparent = FALSE, margin = FALSE, position = NULL, options = NA) {
+ukNavbar <- function(..., transparent = FALSE, margin = FALSE, position = "left", overlay = FALSE, options = NA) {
 
-  if (!is.null(position) && !position %in% c("left", "right", "center"))
-    stop("position should be on of 'left', 'right' or 'center'", call. = FALSE)
-  
+  assert_position(position)
+
   cl <- "uk-navbar-container"
 
   if (isTRUE(transparent))
@@ -20,23 +19,34 @@ ukNavBar <- function(..., transparent = FALSE, margin = FALSE, position = NULL, 
 
   if (isTRUE(margin))
     cl <- paste(cl, "uk-margin")
- 
+
+  if (!is.null(position))
+    position <- paste("uk-navbar-", position)
+      
   shiny::tags$nav(
     class = cl,
-    tags$div(class = position),
-    ...,
+    shiny::tags$div(class = position, ...),
     `uk-navbar` = options
   )
 }
 
 ##' @param ... The UI elements to place in the navigation bar dropdown
-##' @rdname ukNavBar
+##' @rdname ukNavbar
 ##' @export
-ukNavBarDropDown <- function(...) {
+ukNavbarDropdown <- function(...) {
   shiny::tags$div(
-    class = cl,
-    ...,
-    `uk-navbar` = options
+    class = "uk-navbar-dropdown",
+    ...
+  )
+}
+
+##' @param ... The UI elements to place in the navigation bar dropdown
+##' @rdname ukNavbar
+##' @export
+ukNavbarItem <- function(...) {
+  shiny::tags$div(
+    class = "uk-navbar-item",
+    ...
   )
 
 }

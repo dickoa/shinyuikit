@@ -22,7 +22,7 @@
 ##' )
 ##' }
 ##' @export
-ukSearchInput <- function(inputId, label = NULL, placeholder = NULL, width = NULL, navbar = FALSE, default_style = TRUE) {
+ukSearchInput <- function(inputId, label = NULL, placeholder = NULL, width = NULL, navbar = FALSE, default_style = TRUE, icon = TRUE) {
 
   cl <- "uk-search ShinyUIkitSearch"
 
@@ -42,6 +42,7 @@ ukSearchInput <- function(inputId, label = NULL, placeholder = NULL, width = NUL
     shiny::tags$fieldset(
       class = "uk-fieldset",
       if (!is.null(label)) shiny::tags$label(class = "uk-form-label", `for` = inputId, label),
+      if (!is.null(icon)) shiny::tags$span(`uk-search-icon` = NA),
       shiny::tags$input(
         class = "uk-search-input",
         type = "search",

@@ -4,7 +4,7 @@
 \alias{ukRadioInput}
 \title{Create a shinyuikit radio}
 \usage{
-ukRadioInput(inputId, label, choices = NULL, selected = NULL)
+ukRadioInput(inputId, label = NULL, choices = NULL, selected = NULL)
 }
 \arguments{
 \item{inputId}{character. The input identifider used to access the value}

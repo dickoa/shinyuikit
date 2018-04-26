@@ -24,10 +24,73 @@ devtools::install_git("https://gitlab.com/dickoa/shinyuikit")
 
 ``` r
 library(shiny)
+library(shinyuikit)
 
 shinyApp(
   ui = ukPage(
+    suppressDependencies("bootstrap"),
+    ukSidebarLayout(
+      ukSidebarToggle("Choose Distribution", sidebar_id = "test"),
+      ukSidebar(ukRadioInput("dist", "Distribution type:",
+                             c("Normal" = "norm",
+                               "Uniform" = "unif",
+                               "Log-normal" = "lnorm",
+                               "Exponential" = "exp"),
+                             selected = "norm"),
+                title = "Title", sidebar_id = "test")
+    ),
+    ukContainer(
+      ukGrid(
+        tags$div(
+          ukCardBody(ukCardTitle("Hover"),
+                     p("Lorem ipsum dolor sit amet, consectetur adipisicing elit"),
+                     plotOutput("hist1"),
+                     hover = TRUE)
+        ),
+        tags$div(
+          ukCardBody(ukCardTitle("Default"),
+                     p("Lorem ipsum dolor sit amet, consectetur adipisicing elit."),
+                     plotOutput("hist2"),
+                     style = "default", hover = TRUE)
+        ),
+        tags$div(
+          ukCardBody(ukCardTitle("Primary"),
+                     p("Lorem ipsum dolor sit amet, consectetur adipisicing elit."),
+                     plotOutput("hist3"),
+                     style = "primary", hover = TRUE)
+        ),
+        tags$div(
+          ukCardBody(ukCardTitle("Secondary"),
+                   p("Lorem ipsum dolor sit amet, consectetur adipisicing elit."),
+                   plotOutput("hist4"),
+                   style = "secondary", hover = TRUE)
+        ),
+        child_width = "half", match_height = TRUE)
+    )
   ),
-  server = function(input, output) { }
+  server = function(input, output) {
+    data <- reactive({
+      switch(input$dist,
+             norm = rnorm,
+             unif = runif,
+             lnorm = rlnorm,
+             exp = rexp,
+             rnorm)
+    })
+    
+    output$hist1 <- renderPlot({
+      hist(data()(1000), col = "darkgrey")
+    })
+    
+    output$hist2 <- renderPlot({
+      hist(data()(1000), col = "steelblue")
+    })
+    output$hist3 <- renderPlot({
+      hist(data()(1000), col = "wheat")
+    }, bg = NA)
+    output$hist4 <- renderPlot({
+      hist(data()(1000), col = "white")
+    }, bg = NA)
+  }
 )
 ```

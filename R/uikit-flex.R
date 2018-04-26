@@ -28,13 +28,13 @@ ukFlex <- function(..., inline = FALSE, wrap = NULL, horizontal_align = NULL, ve
   
   if (!is.null(wrap))
     cl <- paste(cl, uk_wrap(wrap))
-  
+ 
   if (!is.null(width))
     cl <- paste(cl, uk_width(width))
- 
+
   if (isTRUE(inline))
     cl <- paste(cl, "uk-flex-inline")
-  
+ 
   shiny::tags$div(
     class = cl,
     ...,
