@@ -35,7 +35,6 @@ ukSidebar <- function(..., sidebar_id, title = NULL) {
 
 ##' UIkit sidebar toggle button
 ##'
-##' .. content for \details{} ..
 ##' @param ... UI element for the toggle
 ##' @param sidebar_id id of the created sidebar 
 ##' @export

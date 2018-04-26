@@ -15,9 +15,18 @@ MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.or
 
 ## Installation
 
+### Gitlab
+
 ``` r
 # install.packages("devtools")
 devtools::install_git("https://gitlab.com/dickoa/shinyuikit")
+```
+
+### Github
+
+``` r
+# install.packages("devtools")
+devtools::install_github("dickoa/shinyuikit")
 ```
 
 ## Example
@@ -28,7 +37,6 @@ library(shinyuikit)
 
 shinyApp(
   ui = ukPage(
-    suppressDependencies("bootstrap"),
     ukSidebarLayout(
       ukSidebarToggle("Choose Distribution", sidebar_id = "test"),
       ukSidebar(ukRadioInput("dist", "Distribution type:",
