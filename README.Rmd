@@ -97,25 +97,25 @@ shinyApp(
       ukGrid(
         tags$div(
           ukCardBody(ukCardTitle("Hover"),
-                     p("Lorem ipsum dolor sit amet, consectetur adipisicing elit"),
+                     tags$p("Lorem ipsum dolor sit amet, consectetur adipisicing elit"),
                      plotOutput("hist1"),
                      hover = TRUE)
         ),
         tags$div(
           ukCardBody(ukCardTitle("Default"),
-                     p("Lorem ipsum dolor sit amet, consectetur adipisicing elit."),
+                     tags$p("Lorem ipsum dolor sit amet, consectetur adipisicing elit."),
                      plotOutput("hist2"),
                      style = "default", hover = TRUE)
         ),
         tags$div(
           ukCardBody(ukCardTitle("Primary"),
-                     p("Lorem ipsum dolor sit amet, consectetur adipisicing elit."),
+                     tags$p("Lorem ipsum dolor sit amet, consectetur adipisicing elit."),
                      plotOutput("hist3"),
                      style = "primary", hover = TRUE)
         ),
         tags$div(
           ukCardBody(ukCardTitle("Secondary"),
-                   p("Lorem ipsum dolor sit amet, consectetur adipisicing elit."),
+                   tags$p("Lorem ipsum dolor sit amet, consectetur adipisicing elit."),
                    plotOutput("hist4"),
                    style = "secondary", hover = TRUE)
         ),
@@ -123,7 +123,7 @@ shinyApp(
     )
   ),
   server = function(input, output) {
-    data <- reactive({
+    dataInput <- reactive({
       switch(input$dist,
              norm = rnorm,
              unif = runif,
@@ -133,17 +133,21 @@ shinyApp(
     })
     
     output$hist1 <- renderPlot({
-      hist(data()(1000), col = "darkgrey")
+      data <- dataInput()
+      hist(data(1000), col = "darkgrey")
     })
     
     output$hist2 <- renderPlot({
-      hist(data()(1000), col = "steelblue")
+      data <- dataInput()
+      hist(data(1000), col = "steelblue")
     })
     output$hist3 <- renderPlot({
-      hist(data()(1000), col = "wheat")
+      data <- dataInput()
+      hist(data(1000), col = "wheat")
     }, bg = NA)
     output$hist4 <- renderPlot({
-      hist(data()(1000), col = "white")
+      data <- dataInput()
+      hist(data(1000), col = "white")
     }, bg = NA)
   }
 )

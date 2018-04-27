@@ -8,12 +8,16 @@
 ##' @param hover logical. Create hover effect on the card.
 ##' @rdname ukCard
 ##' @export
-ukCard <- function(..., style = NULL, size = NULL, hover = FALSE) {
+ukCard <- function(..., style = NULL, size = NULL, width = NULL, hover = FALSE) {
 
   assert_style(style)
   assert_size(size)
+  assert_width(width)
   
   cl <- "uk-card"
+
+  if (!is.null(width))
+    cl <- paste(cl, uk_width(width))
   
   if (isTRUE(hover))
     cl <- paste(cl, "uk-card-hover")
@@ -25,7 +29,7 @@ ukCard <- function(..., style = NULL, size = NULL, hover = FALSE) {
     cl <- paste(cl, paste0("uk-card-", size))
   
   shiny::tags$div(
-    class = paste(cl, "uk-card-body"),
+    class = cl,
     ...
   )
 }
@@ -41,7 +45,7 @@ ukCard <- function(..., style = NULL, size = NULL, hover = FALSE) {
 ##' @param height character. Can be 'default', 'primary' or 'secondary'.
 ##' @rdname ukCard
 ##' @export
-ukCardBody <- function(..., style = NULL, size = NULL, hover = FALSE, width = NULL, height = NULL) {
+ukCardBody <- function(..., style = NULL, size = NULL, hover = FALSE, width = NULL, height = NULL, remove_margin = FALSE) {
 
   assert_style(style)
   assert_size(size)
@@ -64,6 +68,9 @@ ukCardBody <- function(..., style = NULL, size = NULL, hover = FALSE, width = NU
   
   if (!is.null(size))
     cl <- paste(cl, paste0("uk-card-", size))
+
+  if (isTRUE(remove_margin))
+    cl <- paste(cl, "uk-margin-remove")
   
   shiny::tags$div(
     class = cl,
@@ -95,22 +102,6 @@ ukCardMedia <- function(..., position = NULL) {
 }
 
 
-##' Create a shinyuikit Card Media
-##' 
-##' Build a UIkit Card media for Shiny
-##'
-##' @param ... The UI elements to place in the card footer
-##' @rdname ukCard
-##' @export
-ukCardFooter <- function(...) {
-  
-  shiny::tags$div(
-    class = "uk-card-footer",
-    ...
-  )
-}
-
-
 
 ##' Create a shinyuikit Card title
 ##' 
@@ -119,10 +110,42 @@ ukCardFooter <- function(...) {
 ##' @param title character. The card title
 ##' @rdname ukCard
 ##' @export
-ukCardTitle <- function(title) {
- 
-  shiny::tags$h3(
-    class = "uk-card-title",
-    title
+ukCardTitle <- function(title, margin_position = NULL, margin_size = NULL) {
+  
+    shiny::tags$h3(
+      class = "uk-card-title",
+      title
+    )
+}
+
+##' Create a shinyuikit Card Header
+##' 
+##' Build a UIkit Card Header
+##' 
+##' @param ... UI element inside the header
+##' @rdname ukCard
+##' @export
+ukCardHeader <- function(...) {
+
+  shiny::tags$div(
+    class = "uk-card-header",
+    ...
+    )
+}
+
+
+
+##' Create a shinyuikit Card Footer
+##' 
+##' Build a UIkit Card Footer
+##' 
+##' @param ... UI element inside the header
+##' @rdname ukCard
+##' @export
+ukCardFooter <- function(...) {
+
+  shiny::tags$div(
+    class = "uk-card-footer",
+    ...
   )
 }

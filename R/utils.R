@@ -26,15 +26,31 @@ assert_child_width <- function(width) {
 }
 
 assert_style <- function(style, add = NULL, remove = NULL) {
-  x <- union(c("default", "primary", "secondary"), add)
-  x <- setdiff(c("default", "primary", "secondary"), remove)
+  if (!is.null(add) & !is.null(remove))
+    stop("you can either add or remove element not both!")
+  
+  x <- c("default", "primary", "secondary")
+  
+  if (!is.null(add))
+    x <- union(x, add)
+  
+  if (!is.null(remove))
+    x <- setdiff(x, remove)
+  
   if (!is.null(style) && !style %in% x)
-    stop("size should be on of 'default', 'primary' or 'secondary'", call. = FALSE)
+    stop("style should be one of 'default', 'primary' or 'secondary'", call. = FALSE)
 }
 
 assert_size <- function(size, add = NULL, remove = NULL) {
-  x <- union(c("small", "large", "expand"), add)
-  x <- setdiff(c("small", "large", "expand"), remove)
+
+  x <- c("small", "large", "expand")
+  
+  if (!is.null(add))
+    x <- union(, add)
+  
+  if (!is.null(remove))
+    x <- setdiff(x, remove)
+  
   if (!is.null(size) && !size %in% x)
     stop("size should be one of 'small', 'large' or 'expand'", call. = FALSE)
 }
@@ -60,6 +76,7 @@ assert_direction <- function(direction) {
   if (!is.null(direction) && !direction %in% c("row", "row-reverse", "column", "column-reverse"))
     stop("direction should be on of 'row', 'row-inverse', 'column' or 'column-reverse'", call. = FALSE)
 }
+
 
 assert_horizontal_align <- function(horizontal_align) {
   if (!is.null(horizontal_align) && !horizontal_align %in% c("left", "center", "right", "between", "around"))

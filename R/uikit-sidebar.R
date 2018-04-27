@@ -19,7 +19,7 @@ ukSidebarLayout <- function(...) {
 ##' @param title sidebar header
 ##' @export
 ukSidebar <- function(..., sidebar_id, title = NULL) {
-  
+ 
   shiny::tags$div(
     id = sidebar_id,
     shiny::tags$div(

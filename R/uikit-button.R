@@ -4,7 +4,7 @@
 ##' @param style character. UI element style
 ##' @param size character. UI element size
 ##' @param width character. UI element width
-ukButton <- function(..., style = "default", size = NULL, width = NULL) {
+ukButton <- function(..., style = "default", size = NULL, width = NULL, href = FALSE) {
 
   assert_style(style, add = c("text", "link"))
   assert_size(size, remove = "expand")
