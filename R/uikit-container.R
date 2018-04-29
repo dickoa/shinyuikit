@@ -15,7 +15,7 @@
 ##'  ),
 ##'  server = function(input, output) {}
 ##' )}
-##' @author Ahmadou H. Dicko
+##' @export
 ukContainer <- function(..., size = NULL) {
 
   assert_size(size)

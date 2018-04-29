@@ -26,6 +26,3 @@ shinyApp(
  server = function(input, output) {}
 )}
 }
-\author{
-Ahmadou H. Dicko
-}

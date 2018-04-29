@@ -1,6 +1,7 @@
 ##' UIkit sidebar layout
 ##'
-##' @param ... UI element to add 
+##' @param ... UI element to add the layout
+##' @rdname ukSidebar
 ##' @export
 ukSidebarLayout <- function(...) {
 
@@ -17,6 +18,7 @@ ukSidebarLayout <- function(...) {
 ##' @param ... UI element to include in the sidebar
 ##' @param sidebar_id id of the sidebar
 ##' @param title sidebar header
+##' @rdname ukSidebar
 ##' @export
 ukSidebar <- function(..., sidebar_id, title = NULL) {
  
@@ -36,7 +38,8 @@ ukSidebar <- function(..., sidebar_id, title = NULL) {
 ##' UIkit sidebar toggle button
 ##'
 ##' @param ... UI element for the toggle
-##' @param sidebar_id id of the created sidebar 
+##' @param sidebar_id id of the created sidebar
+##' @rdname ukSidebar
 ##' @export
 ukSidebarToggle <- function(..., sidebar_id) {
   shiny::tags$button(class = "uk-button uk-button default uk-margin-small-right",
@@ -48,7 +51,8 @@ ukSidebarToggle <- function(..., sidebar_id) {
 
 
 ##' Button to close the Sidebar
-##'
+##' 
+##' @rdname ukSidebar
 ##' @export
 ukSidebarClose <- function() {
   shiny::tags$button(class = "uk-offcanvas-close",

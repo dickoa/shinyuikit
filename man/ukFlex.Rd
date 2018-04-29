@@ -2,10 +2,11 @@
 % Please edit documentation in R/uikit-flex.R
 \name{ukFlex}
 \alias{ukFlex}
-\title{Create a shinyuikit Flex}
+\title{UIkit Flexbox layout for shiny}
 \usage{
 ukFlex(..., inline = FALSE, wrap = NULL, horizontal_align = NULL,
-  vertical_align = NULL, direction = NULL, width = NULL)
+  vertical_align = NULL, direction = NULL, height = NULL, width = NULL,
+  muted_background = FALSE, dimension = NULL)
 }
 \arguments{
 \item{...}{The UI elements to place in the Flex element}
@@ -23,5 +24,5 @@ ukFlex(..., inline = FALSE, wrap = NULL, horizontal_align = NULL,
 \item{width}{character. Define Flex item width}
 }
 \description{
-Build a shinyuikit Flex
+UIkit Flexbox layout for shiny
 }

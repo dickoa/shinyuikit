@@ -24,6 +24,8 @@
 ##' @export
 ukCheckboxInput <- function(inputId, label, choices = NULL, selected = NULL) {
 
+  selected <- shiny::restoreInput(id = inputId, default = selected)
+  
   if (is.null(choices))
     stop("missing choices", call. = FALSE)
  
@@ -47,7 +49,7 @@ ukCheckboxInput <- function(inputId, label, choices = NULL, selected = NULL) {
     )
     
     if (!is.null(selected) && choices$value[i] == selected)
-      input <- shiny::tagAppendAttributes(input, checked = NA)    
+      input <- shiny::tagAppendAttributes(input, checked = NA)
     choicetag <- shiny::tags$label(input, choices$name[i])
     checkbox <- shiny::tagAppendChild(checkbox, choicetag)
   }

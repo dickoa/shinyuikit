@@ -4,20 +4,24 @@
 \alias{ukCard}
 \alias{ukCardBody}
 \alias{ukCardMedia}
-\alias{ukCardFooter}
 \alias{ukCardTitle}
+\alias{ukCardHeader}
+\alias{ukCardFooter}
 \title{Create a shinyuikit Card}
 \usage{
-ukCard(..., style = NULL, size = NULL, hover = FALSE)
+ukCard(..., style = NULL, size = NULL, width = NULL, hover = FALSE,
+  margin = NULL, padding = NULL)
 
 ukCardBody(..., style = NULL, size = NULL, hover = FALSE, width = NULL,
-  height = NULL)
+  height = NULL, margin = NULL, padding = NULL)
 
-ukCardMedia(..., position = NULL)
+ukCardMedia(..., position = "top")
+
+ukCardTitle(title, margin_position = NULL, margin_size = NULL)
+
+ukCardHeader(..., width = NULL)
 
 ukCardFooter(...)
-
-ukCardTitle(title)
 }
 \arguments{
 \item{...}{The UI elements to place in the card}
@@ -26,9 +30,9 @@ ukCardTitle(title)
 
 \item{size}{character. Can be 'small' or 'large'.}
 
-\item{hover}{logical. Create hover effect on the card.}
-
 \item{width}{character. Can be 'default', 'primary' or 'secondary'.}
+
+\item{hover}{logical. Create hover effect on the card.}
 
 \item{height}{character. Can be 'default', 'primary' or 'secondary'.}
 
@@ -42,7 +46,9 @@ ukCardTitle(title)
 
 \item{...}{The UI elements to place in the card media}
 
-\item{...}{The UI elements to place in the card footer}
+\item{...}{UI element inside the header}
+
+\item{...}{UI element inside the header}
 }
 \description{
 Build a UIkit Card for Shiny
@@ -51,7 +57,28 @@ Build a UIkit Card Body for Shiny
 
 Build a UIkit Card media for Shiny
 
-Build a UIkit Card media for Shiny
-
 Build a UIkit Card title for Shiny
+
+Build a UIkit Card Header
+
+Build a UIkit Card Footer
+}
+\examples{
+\dontrun{
+library(shiny)
+shinyApp(
+ ui = ukPage(
+   ukContainer(
+     ukCard(
+       ukCardHeader(ukCardTitle("A nice graph")),
+       ukCardBody(plotOutput("graph")),
+       ukCardFooter(ukButton(tags$p("More..."), style = "text", href = "#")),
+       style = "default")
+  )
+ ),
+ server = function(input, output) {
+   output$graph <- renderPlot(hist(rnorm(1000)))
+ })
+}
+
 }

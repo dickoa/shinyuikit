@@ -7,7 +7,7 @@
 \title{Create a shinyuikit Navbar}
 \usage{
 ukNavbar(..., transparent = FALSE, margin = FALSE, position = "left",
-  options = NA)
+  overlay = FALSE, options = NA)
 
 ukNavbarDropdown(...)
 

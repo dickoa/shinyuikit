@@ -10,11 +10,13 @@
 ##' you can choose 'half' to have half of their parent container, 'third' take up third of parent container, this apply to 'fourth', 'fifth' or 'sixth'.
 ##' 'auto' divides the grid into equal units based on content size or 'expand' equal units on available space
 ##' @export
-ukGrid <- function(..., divider = FALSE, gutter = NULL, match_height = FALSE, width = NULL, child_width = NULL, text_center = FALSE) {
+ukGrid <- function(..., divider = FALSE, gutter = NULL, match_height = FALSE, width = NULL, child_width = NULL, text_center = FALSE, padding = NULL, margin = NULL) {
 
   assert_gutter(gutter)
   assert_width(width)
   assert_width(child_width)
+  ## assert_padding(padding)
+  ## assert_padding(padding)
   
   cl <- NULL
 
@@ -26,6 +28,12 @@ ukGrid <- function(..., divider = FALSE, gutter = NULL, match_height = FALSE, wi
   
   if (!is.null(width))
     cl <- paste(cl, uk_width(width))
+
+  if (!is.null(padding))
+    cl <- paste(cl, paste0("uk-padding-", padding))
+
+  if (!is.null(margin))
+    cl <- paste(cl, gsub("\\-$", "", paste0("uk-margin-", margin)))
   
   if (isTRUE(divider))
     cl <- paste(cl, "uk-grid-divider")

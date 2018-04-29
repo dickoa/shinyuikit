@@ -6,9 +6,28 @@
 ##' @param style character. Can be 'default', 'primary' or 'secondary'. 
 ##' @param size character. Can be 'small' or 'large'.
 ##' @param hover logical. Create hover effect on the card.
+##'  
+##' @examples
+##' \dontrun{
+##' library(shiny)
+##'shinyApp(
+##'  ui = ukPage(
+##'    ukContainer(
+##'      ukCard(
+##'        ukCardHeader(ukCardTitle("A nice graph")),
+##'        ukCardBody(plotOutput("graph")),
+##'        ukCardFooter(ukButton(tags$p("More..."), style = "text", href = "#")),
+##'        style = "default")
+##'   )
+##'  ),
+##'  server = function(input, output) {
+##'    output$graph <- renderPlot(hist(rnorm(1000)))
+##'  })
+##' }
+##' 
 ##' @rdname ukCard
 ##' @export
-ukCard <- function(..., style = NULL, size = NULL, width = NULL, hover = FALSE) {
+ukCard <- function(..., style = NULL, size = NULL, width = NULL, hover = FALSE, margin = NULL, padding = NULL) {
 
   assert_style(style)
   assert_size(size)
@@ -18,6 +37,12 @@ ukCard <- function(..., style = NULL, size = NULL, width = NULL, hover = FALSE) 
 
   if (!is.null(width))
     cl <- paste(cl, uk_width(width))
+  
+  if (!is.null(padding))
+    cl <- paste(cl, paste0("uk-padding-", padding))
+
+  if (!is.null(margin))
+    cl <- paste(cl, gsub("\\-$", "", paste0("uk-margin-", margin)))
   
   if (isTRUE(hover))
     cl <- paste(cl, "uk-card-hover")
@@ -45,7 +70,7 @@ ukCard <- function(..., style = NULL, size = NULL, width = NULL, hover = FALSE) 
 ##' @param height character. Can be 'default', 'primary' or 'secondary'.
 ##' @rdname ukCard
 ##' @export
-ukCardBody <- function(..., style = NULL, size = NULL, hover = FALSE, width = NULL, height = NULL, remove_margin = FALSE) {
+ukCardBody <- function(..., style = NULL, size = NULL, hover = FALSE, width = NULL, height = NULL, margin = NULL, padding = NULL) {
 
   assert_style(style)
   assert_size(size)
@@ -56,6 +81,12 @@ ukCardBody <- function(..., style = NULL, size = NULL, hover = FALSE, width = NU
   
   if (!is.null(width))
     cl <- paste(cl, uk_width(width))
+  
+  if (!is.null(padding))
+    cl <- paste(cl, paste0("uk-padding-", padding))
+  
+  if (!is.null(margin))
+    cl <- paste(cl, gsub("\\-$", "", paste0("uk-margin-", margin)))
   
   if (!is.null(height))
     cl <- paste(cl, paste0("uk-height-", height))
@@ -68,9 +99,6 @@ ukCardBody <- function(..., style = NULL, size = NULL, hover = FALSE, width = NU
   
   if (!is.null(size))
     cl <- paste(cl, paste0("uk-card-", size))
-
-  if (isTRUE(remove_margin))
-    cl <- paste(cl, "uk-margin-remove")
   
   shiny::tags$div(
     class = cl,
@@ -87,7 +115,7 @@ ukCardBody <- function(..., style = NULL, size = NULL, hover = FALSE, width = NU
 ##' @param position character. 'top', 'bottom', 'left' or 'right'
 ##' @rdname ukCard
 ##' @export
-ukCardMedia <- function(..., position = NULL) {
+ukCardMedia <- function(..., position = "top") {
 
   assert_position(position)
   
@@ -125,10 +153,17 @@ ukCardTitle <- function(title, margin_position = NULL, margin_size = NULL) {
 ##' @param ... UI element inside the header
 ##' @rdname ukCard
 ##' @export
-ukCardHeader <- function(...) {
+ukCardHeader <- function(..., width = NULL) {
 
+  assert_width(width)
+  
+  cl <- "uk-card-header"
+  
+  if (!is.null(width))
+    cl <- paste(cl, uk_width(width))
+  
   shiny::tags$div(
-    class = "uk-card-header",
+    class = cl,
     ...
     )
 }

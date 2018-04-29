@@ -6,22 +6,24 @@ choices2options <- function(x)
 
 
 assert_width <- function(width = NULL) {
-  if (!is.null(width) && !width %in% c("one", "half", "third", "two-thirds",
-                                       "fourth", "three-fourths", "fifth",
-                                       "two-fifths", "three-fifths", "four-fifths", 
-                                       "sixth", "five-sixths", "auto", "expand",
-                                       "small", "medium", "large",
-                                       "xlarge", "xxlarge", "xsmall"))
+  x <- c("one", "half", "third", "two-thirds", "fourth",
+        "three-fourths", "fifth", "two-fifths", "three-fifths",
+        "four-fifths", "sixth", "five-sixths", "auto", "expand",
+        "small", "medium", "large", "xlarge", "xxlarge", "xsmall")
+  
+  if (!is.null(width) && !width %in% x)
     stop("width should be one of 'one', 'half', 'third', 'two-thirds', 'fourth', 'three-fourths', 'fifth', 'two-fifths', 'three-fifths', 'four-fifths', 'sixth', 'five-sixths', 'auto', 'expand', 'small', 'medium', 'large', 'xlarge' or 'xxlarge'", call. = FALSE)
 }
 
 assert_gutter <- function(gutter = NULL) {
-  if (!is.null(gutter) && !gutter %in% c("small", "medium", "large", "collapse"))
-    stop("gutter should be on of 'small', 'medium', 'large' or 'collapse'", call. = FALSE)
+  x <- c("small", "medium", "large", "collapse")
+  if (!is.null(gutter) && !gutter %in% x)
+    stop("gutter should be one of 'small', 'medium', 'large' or 'collapse'", call. = FALSE)
 }
 
 assert_child_width <- function(width) {
-  if (!is.null(width) && !width %in% c("half", "third", "fourth", "fifth", "sixth", "auto", "expand"))
+  x <- c("half", "third", "fourth", "fifth", "sixth", "auto", "expand")
+  if (!is.null(width) && !width %in% x)
     stop("child_width should be one of 'half', 'third', 'fourth', 'fifth', 'sixth', 'auto' or 'expand'", call. = FALSE)
 }
 
@@ -42,6 +44,8 @@ assert_style <- function(style, add = NULL, remove = NULL) {
 }
 
 assert_size <- function(size, add = NULL, remove = NULL) {
+  if (!is.null(add) & !is.null(remove))
+    stop("you can either add or remove element not both!")
 
   x <- c("small", "large", "expand")
   
@@ -56,7 +60,8 @@ assert_size <- function(size, add = NULL, remove = NULL) {
 }
 
 assert_height <- function(height) {
-  if (!is.null(height) && !height %in% c("small", "max-small", "medium", "max-medium", "large", "max-large"))
+  x <- c("small", "max-small", "medium", "max-medium", "large", "max-large")
+  if (!is.null(height) && !height %in% x)
     stop("size should be one of 'small', 'max-small', 'medium', 'max-medium', 'large' or  'max-large'", call. = FALSE)
 }
 
@@ -73,7 +78,8 @@ assert_wrap <- function(wrap) {
 }
 
 assert_direction <- function(direction) {
-  if (!is.null(direction) && !direction %in% c("row", "row-reverse", "column", "column-reverse"))
+  x <- c("row", "row-reverse", "column", "column-reverse")
+  if (!is.null(direction) && !direction %in% x)
     stop("direction should be on of 'row', 'row-inverse', 'column' or 'column-reverse'", call. = FALSE)
 }
 
@@ -86,6 +92,13 @@ assert_horizontal_align <- function(horizontal_align) {
 assert_vertical_align <- function(vertical_align) {
   if (!is.null(vertical_align) && !vertical_align %in% c("stretch", "top", "middle", "bottom"))
     stop("vertical_align should be on of 'stretch', 'top', 'middle' or 'bottom'", call. = FALSE)
+}
+
+assert_padding <- function(padding) {
+  if (!is.null(padding) && !padding %in% c("default", "stretch", "between",
+                                     "around", "top", "middle",
+                                     "bottom", "reverse", "nopadding"))
+    stop("padding should be on of 'default', 'stretch', 'between', 'around', 'top', 'middle', 'bottom','reverse' or 'remove'", call. = FALSE)
 }
 
 uk_child_width <- function(width)
@@ -111,7 +124,7 @@ uk_width <- function(width)
          `three-fifths` = "uk-width-3-5",
          `four-fifths` = "uk-width-4-5",
          sixth = "uk-width-1-6",
-         `fith-sixths` = "uk-width-5-6",
+         `five-sixths` = "uk-width-5-6",
          small = "uk-width-small",
          small = "uk-width-xsmall",
          medium = "uk-width-medium",

@@ -1,9 +1,10 @@
-##'  uikit group button for shiny
+##'  UIkit button for shiny
 ##'
-##' @param ... UI for the button
+##' @param ... UI element to insert
 ##' @param style character. UI element style
 ##' @param size character. UI element size
 ##' @param width character. UI element width
+##' @export
 ukButton <- function(..., style = "default", size = NULL, width = NULL, href = FALSE) {
 
   assert_style(style, add = c("text", "link"))
@@ -25,9 +26,11 @@ ukButton <- function(..., style = "default", size = NULL, width = NULL, href = F
 }
 
 
-##' uikit group button for shiny
+##' UIkit group button for shiny
 ##'
 ##' @param ... UI for the button group
+##' @rdname ukButton
+##' @export
 ukButtonGroup <- function(...)
   shiny::tags$div(
     class = "uk-button-group",

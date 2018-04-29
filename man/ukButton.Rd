@@ -2,19 +2,27 @@
 % Please edit documentation in R/uikit-button.R
 \name{ukButton}
 \alias{ukButton}
-\title{uikit group button for shiny}
+\alias{ukButtonGroup}
+\title{UIkit button for shiny}
 \usage{
-ukButton(..., style = "default", size = NULL, width = NULL)
+ukButton(..., style = "default", size = NULL, width = NULL,
+  href = FALSE)
+
+ukButtonGroup(...)
 }
 \arguments{
-\item{...}{UI for the button}
+\item{...}{UI element to insert}
 
 \item{style}{character. UI element style}
 
 \item{size}{character. UI element size}
 
 \item{width}{character. UI element width}
+
+\item{...}{UI for the button group}
 }
 \description{
-uikit group button for shiny
+UIkit button for shiny
+
+UIkit group button for shiny
 }
