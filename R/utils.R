@@ -80,13 +80,18 @@ assert_wrap <- function(wrap) {
 assert_direction <- function(direction) {
   x <- c("row", "row-reverse", "column", "column-reverse")
   if (!is.null(direction) && !direction %in% x)
-    stop("direction should be on of 'row', 'row-inverse', 'column' or 'column-reverse'", call. = FALSE)
+    stop("direction should be one of 'row', 'row-inverse', 'column' or 'column-reverse'", call. = FALSE)
+}
+
+assert_align <- function(align) {
+  if (!is.null(align) && !align %in% c("left", "right"))
+    stop("align should be either 'left' or 'right'", call. = FALSE)
 }
 
 
 assert_horizontal_align <- function(horizontal_align) {
   if (!is.null(horizontal_align) && !horizontal_align %in% c("left", "center", "right", "between", "around"))
-    stop("horizontal_align should be on of 'left', 'center', 'right', 'between' or 'around'", call. = FALSE)
+    stop("horizontal_align should be one of 'left', 'center', 'right', 'between' or 'around'", call. = FALSE)
 }
 
 assert_vertical_align <- function(vertical_align) {

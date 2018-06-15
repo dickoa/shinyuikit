@@ -99,27 +99,27 @@ shinyApp(
           ukCardBody(ukCardTitle("Hover"),
                      tags$p("Lorem ipsum dolor sit amet, consectetur adipisicing elit"),
                      plotOutput("hist1"),
-                     hover = TRUE)
+                     hover = TRUE, sortable = TRUE)
         ),
         tags$div(
           ukCardBody(ukCardTitle("Default"),
                      tags$p("Lorem ipsum dolor sit amet, consectetur adipisicing elit."),
                      plotOutput("hist2"),
-                     style = "default", hover = TRUE)
+                     style = "default", hover = TRUE, sortable = TRUE)
         ),
         tags$div(
           ukCardBody(ukCardTitle("Primary"),
                      tags$p("Lorem ipsum dolor sit amet, consectetur adipisicing elit."),
                      plotOutput("hist3"),
-                     style = "primary", hover = TRUE)
+                     style = "primary", hover = TRUE, sortable = TRUE)
         ),
         tags$div(
           ukCardBody(ukCardTitle("Secondary"),
                    tags$p("Lorem ipsum dolor sit amet, consectetur adipisicing elit."),
                    plotOutput("hist4"),
-                   style = "secondary", hover = TRUE)
+                   style = "secondary", hover = TRUE, sortable = TRUE)
         ),
-        child_width = "half", match_height = TRUE)
+        child_width = "half", match_height = TRUE, allow_sortable = TRUE)
     )
   ),
   server = function(input, output) {
@@ -131,12 +131,12 @@ shinyApp(
              exp = rexp,
              rnorm)
     })
-    
+
     output$hist1 <- renderPlot({
       data <- dataInput()
       hist(data(1000), col = "darkgrey")
     })
-    
+
     output$hist2 <- renderPlot({
       data <- dataInput()
       hist(data(1000), col = "steelblue")

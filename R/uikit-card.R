@@ -6,6 +6,7 @@
 ##' @param style character. Can be 'default', 'primary' or 'secondary'. 
 ##' @param size character. Can be 'small' or 'large'.
 ##' @param hover logical. Create hover effect on the card.
+##' @param sortable logical. Allow the card to be sortable.
 ##'  
 ##' @examples
 ##' \dontrun{
@@ -23,11 +24,24 @@
 ##'  server = function(input, output) {
 ##'    output$graph <- renderPlot(hist(rnorm(1000)))
 ##'  })
+##'
+##'
+##' card_line <- function(label)
+##'   tags$li(tags$div(class = "uk-card uk-card-default uk-card-body uk-sortable-handle", label))
+##' ui <- ukPage(
+##'   tags$ul(class = "uk-grid-small uk-child-width-1-3 uk-text-center", `uk-sortable` = "handle: .uk-sortable-handle", `uk-grid` = NA,
+##'         card_line("Item1"),
+##'         card_line("Item2"),
+##'         card_line("Item3"))
+##' )
+##' server <- function(input, output) {}
+##' shinyApp(ui, server)
+##' 
 ##' }
 ##' 
 ##' @rdname ukCard
 ##' @export
-ukCard <- function(..., style = NULL, size = NULL, width = NULL, hover = FALSE, margin = NULL, padding = NULL) {
+ukCard <- function(..., style = NULL, size = NULL, width = NULL, hover = FALSE, margin = NULL, padding = NULL, sortable = FALSE) {
 
   assert_style(style)
   assert_size(size)
@@ -52,7 +66,10 @@ ukCard <- function(..., style = NULL, size = NULL, width = NULL, hover = FALSE, 
   
   if (isTRUE(size))
     cl <- paste(cl, paste0("uk-card-", size))
-  
+ 
+  if (isTRUE(sortable))
+    cl <- paste(cl, "uk-sortable-handle")
+ 
   shiny::tags$div(
     class = cl,
     ...
@@ -70,7 +87,7 @@ ukCard <- function(..., style = NULL, size = NULL, width = NULL, hover = FALSE, 
 ##' @param height character. Can be 'default', 'primary' or 'secondary'.
 ##' @rdname ukCard
 ##' @export
-ukCardBody <- function(..., style = NULL, size = NULL, hover = FALSE, width = NULL, height = NULL, margin = NULL, padding = NULL) {
+ukCardBody <- function(..., style = NULL, size = NULL, hover = FALSE, width = NULL, height = NULL, margin = NULL, padding = NULL, sortable = FALSE) {
 
   assert_style(style)
   assert_size(size)
@@ -99,6 +116,9 @@ ukCardBody <- function(..., style = NULL, size = NULL, hover = FALSE, width = NU
   
   if (!is.null(size))
     cl <- paste(cl, paste0("uk-card-", size))
+
+  if (isTRUE(sortable))
+    cl <- paste(cl, "uk-sortable-handle")
   
   shiny::tags$div(
     class = cl,

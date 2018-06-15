@@ -6,7 +6,7 @@
 \usage{
 ukGrid(..., divider = FALSE, gutter = NULL, match_height = FALSE,
   width = NULL, child_width = NULL, text_center = FALSE, padding = NULL,
-  margin = NULL)
+  margin = NULL, allow_sortable = FALSE)
 }
 \arguments{
 \item{...}{The UI elements to place in the card}

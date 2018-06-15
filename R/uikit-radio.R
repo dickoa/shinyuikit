@@ -12,7 +12,7 @@
 ##' shinyApp(
 ##'   ui = ukPage(
 ##'    tags$h1("Hello UIkit"),
-##'    ukRadioInput("select", c("Miles per galon" = "mpg", "Rear axle ratio" = "drat"), selected = "mpg"),
+##'    ukRadioInput("select", "Choose a col", c("Miles per galon" = "mpg", "Rear axle ratio" = "drat"), selected = "mpg"),
 ##'    verbatimTextOutput("selected")
 ##'   ),
 ##'   server = function(input, output) {

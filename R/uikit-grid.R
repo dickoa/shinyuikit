@@ -10,13 +10,12 @@
 ##' you can choose 'half' to have half of their parent container, 'third' take up third of parent container, this apply to 'fourth', 'fifth' or 'sixth'.
 ##' 'auto' divides the grid into equal units based on content size or 'expand' equal units on available space
 ##' @export
-ukGrid <- function(..., divider = FALSE, gutter = NULL, match_height = FALSE, width = NULL, child_width = NULL, text_center = FALSE, padding = NULL, margin = NULL) {
+ukGrid <- function(..., divider = FALSE, gutter = NULL, match_height = FALSE, width = NULL, child_width = NULL, text_center = FALSE, padding = NULL, margin = NULL, allow_sortable = FALSE) {
 
   assert_gutter(gutter)
   assert_width(width)
   assert_width(child_width)
-  ## assert_padding(padding)
-  ## assert_padding(padding)
+  assert_padding(padding)
   
   cl <- NULL
 
@@ -44,9 +43,15 @@ ukGrid <- function(..., divider = FALSE, gutter = NULL, match_height = FALSE, wi
   if (isTRUE(text_center))
     cl <- paste(cl, "uk-text-center")
 
-  shiny::tags$div(
+  grid <- shiny::tags$div(
     class = gsub("^ ", "", cl),
     ...,
     `uk-grid` = NA
   )
+
+  if (isTRUE(allow_sortable))
+    grid <- shiny::tagAppendAttributes(grid, `uk-sortable` = "handle: .uk-sortable-handle")
+
+  grid
+  
 }

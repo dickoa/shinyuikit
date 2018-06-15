@@ -10,10 +10,10 @@
 \title{Create a shinyuikit Card}
 \usage{
 ukCard(..., style = NULL, size = NULL, width = NULL, hover = FALSE,
-  margin = NULL, padding = NULL)
+  margin = NULL, padding = NULL, sortable = FALSE)
 
 ukCardBody(..., style = NULL, size = NULL, hover = FALSE, width = NULL,
-  height = NULL, margin = NULL, padding = NULL)
+  height = NULL, margin = NULL, padding = NULL, sortable = FALSE)
 
 ukCardMedia(..., position = "top")
 
@@ -33,6 +33,8 @@ ukCardFooter(...)
 \item{width}{character. Can be 'default', 'primary' or 'secondary'.}
 
 \item{hover}{logical. Create hover effect on the card.}
+
+\item{sortable}{logical. Allow the card to be sortable.}
 
 \item{height}{character. Can be 'default', 'primary' or 'secondary'.}
 
@@ -79,6 +81,19 @@ shinyApp(
  server = function(input, output) {
    output$graph <- renderPlot(hist(rnorm(1000)))
  })
+
+
+card_line <- function(label)
+  tags$li(tags$div(class = "uk-card uk-card-default uk-card-body uk-sortable-handle", label))
+ui <- ukPage(
+  tags$ul(class = "uk-grid-small uk-child-width-1-3 uk-text-center", `uk-sortable` = "handle: .uk-sortable-handle", `uk-grid` = NA,
+        card_line("Item1"),
+        card_line("Item2"),
+        card_line("Item3"))
+)
+server <- function(input, output) {}
+shinyApp(ui, server)
+
 }
 
 }
